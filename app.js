@@ -1,12 +1,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const router = require("./routes/post-route");
+const postRouter = require("./routes/post-route");
+
+const handleCORS = require("./middlewares/handleCORS");
 
 const app = express();
 
 app.use(bodyParser.json());
 
-app.use(router);
+app.use(handleCORS);
+
+app.use(postRouter);
 
 app.listen(8080);
