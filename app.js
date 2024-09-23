@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+const db = require("./database/mongodb");
+
 const postRouter = require("./routes/post-route");
 
 const handleCORS = require("./middlewares/handleCORS");
@@ -13,4 +15,11 @@ app.use(handleCORS);
 
 app.use(postRouter);
 
-app.listen(8080);
+db.connectToDatabase()
+  .then(() => {
+    app.listen(8080);
+  })
+  .catch((error) => {
+    console.log("Failed to connect to database.");
+    console.log(error);
+  });
