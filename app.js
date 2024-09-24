@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 
 const db = require("./database/mongodb");
 
@@ -9,7 +8,8 @@ const handleCORS = require("./middlewares/handleCORS");
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(handleCORS);
 

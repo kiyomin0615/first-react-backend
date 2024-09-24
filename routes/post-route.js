@@ -6,4 +6,6 @@ const router = express.Router();
 
 router.get("/posts", postController.getAllPosts);
 
+router.post("/posts", postController.addNewPost);
+
 module.exports = router;

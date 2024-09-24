@@ -10,6 +10,13 @@ class Post {
     let posts = await db.getDatabase().collection("posts").find({}).toArray();
     return posts;
   }
+
+  async addNewPost() {
+    await db
+      .getDatabase()
+      .collection("posts")
+      .insertOne({ author: this.author, content: this.content });
+  }
 }
 
 module.exports = Post;
